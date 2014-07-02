@@ -1,26 +1,33 @@
 ﻿namespace Challenge2
 {
-    using System;
+    using System.Collections.Generic;
 
     internal class GetTlsArray
     {
-        public string GetArray(string text)
+        public string[] GetArray(string text)
         {
-            PunctuationToWhiteSpace(text);
             var words = SplitToWords(text);
-            var tls = WordsToTls(words);
+            return WordsToTls(words);
         }
 
         private string[] WordsToTls(string[] words)
         {
-            throw new NotImplementedException();
+            var tls = new List<string>();
+            foreach (var word in words)
+            {
+                for (var i = 0; i < word.Length - 2; i++)
+                {
+                    tls.Add(word.Substring(i, 3));
+                }
+            }
+            return tls.ToArray();
         }
 
         private string[] SplitToWords(string text)
         {
-            throw new NotImplementedException();
+            text = text.ToLower();
+            var punctuationAndWhiteSpace = new[] { ' ', '\t', '\n', '.', ',', '\'', '\"', ';', ':', '!', '?', '-', '&', '(', ')', '/', '+', '=' };
+            return text.Split(punctuationAndWhiteSpace);
         }
-
-        private void PunctuationToWhiteSpace(string text) {}
     }
 }

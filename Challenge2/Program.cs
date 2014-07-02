@@ -1,5 +1,6 @@
 ﻿namespace Challenge2
 {
+    using System;
     using System.IO;
 
     internal class Program
@@ -10,7 +11,12 @@
         {
             var tlsCounter = new TlsProcessor();
             var parser = new GetTlsArray();
-            var matchingTls = tlsCounter.GetTls(parser.GetArray(text), 99);
+            var matchingTls = tlsCounter.GetSolutionTls(parser.GetArray(text), 99);
+            foreach (var tls in matchingTls)
+            {
+                Console.WriteLine("{0}", tls);
+            }
+            Console.ReadKey();
         }
     }
 }
