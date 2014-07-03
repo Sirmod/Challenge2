@@ -1,6 +1,7 @@
 ﻿namespace Challenge2
 {
     using System.Collections.Generic;
+    using System.Text.RegularExpressions;
 
     internal class GetTlsArray
     {
@@ -26,8 +27,8 @@
         private string[] SplitToWords(string text)
         {
             text = text.ToLower();
-            var punctuationAndWhiteSpace = new[] { ' ', '\t', '\n', '.', ',', '\'', '\"', ';', ':', '!', '?', '-', '&', '(', ')', '/', '+', '=' };
-            return text.Split(punctuationAndWhiteSpace);
+            var regex = new Regex(@"\W");
+            return regex.Split(text);
         }
     }
 }
